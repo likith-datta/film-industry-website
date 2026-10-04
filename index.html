@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CineVerse | Global Film Industries & Top 10 Actors Showcase</title>
+  <meta name="description" content="Explore top film industries around the world and experience an interactive 10-actor looping showcase with portraits, bios, and notable movies.">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Ambient Background Lighting -->
+  <div class="ambient-glow ambient-glow-1"></div>
+  <div class="ambient-glow ambient-glow-2"></div>
+  <div class="ambient-grid-overlay"></div>
+
+  <!-- Header Section -->
+  <header class="site-header">
+    <div class="header-container">
+      <div class="brand">
+        <div class="brand-logo">
+          <span class="brand-icon">🎬</span>
+        </div>
+        <div class="brand-text">
+          <h1 class="brand-title">Cine<span class="gradient-text">Verse</span></h1>
+          <p class="brand-tagline">Global Film Industries &amp; Top 10 Actors Showcase</p>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <button id="sound-toggle-btn" class="header-action-btn" title="Toggle audio cues" aria-label="Toggle Sound">
+          🔇 Sound: Off
+        </button>
+        <div class="view-mode-toggle">
+          <button id="view-carousel-btn" class="view-btn active" title="Looping Showcase Mode">
+            <span>🎡 Loop View</span>
+          </button>
+          <button id="view-grid-btn" class="view-btn" title="View All 10 Actors Grid">
+            <span>▦ All 10 Grid</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Film Industries Selector Bar -->
+  <nav class="industries-nav" aria-label="Select Film Industry">
+    <div class="nav-container">
+      <div class="nav-title-wrap">
+        <span class="nav-lead-label">Select Film Industry:</span>
+      </div>
+      <div id="industry-tabs" class="industry-tabs-scroll">
+        <!-- Rendered dynamically by script.js -->
+      </div>
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <!-- Industry Banner Card -->
+    <section class="industry-banner-card">
+      <div class="banner-inner">
+        <div class="banner-badge-row">
+          <span id="industry-banner-badge" class="industry-pill">🌟 Telugu Cinema</span>
+          <span id="loop-status-indicator" class="status-indicator">
+            <span class="status-pulse running"></span> Auto-looping Active
+          </span>
+        </div>
+        <div class="banner-details">
+          <h2 id="industry-banner-title" class="industry-main-heading">Tollywood Top 10 Actors</h2>
+          <p id="industry-banner-desc" class="industry-lead-text">
+            Known for epic high-budget pan-Indian spectacle cinema, massive emotional storytelling, and larger-than-life hero personas.
+          </p>
+        </div>
+        <div class="banner-meta">
+          <span id="industry-banner-origin" class="banner-origin-tag">
+            <strong>Region:</strong> India (Andhra Pradesh &amp; Telangana)
+          </span>
+          <span class="banner-badge-count">10 Superstars</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Carousel / Looping Showcase View -->
+    <section id="carousel-section" class="showcase-section">
+      <!-- Showcase Controls Header -->
+      <div class="showcase-header-bar">
+        <div class="sequence-counter-badge">
+          <span class="counter-label">ACTOR</span>
+          <span class="counter-digits">
+            <span id="counter-current" class="counter-current">01</span>
+            <span class="counter-divider">/</span>
+            <span id="counter-total" class="counter-total">10</span>
+          </span>
+        </div>
+
+        <!-- 1 to 10 Step Progress Dots -->
+        <div id="step-indicators" class="step-indicators-bar" aria-label="Actor position in loop">
+          <!-- Rendered dynamically by script.js -->
+        </div>
+
+        <div class="loop-toolbar">
+          <div class="speed-selector-wrap">
+            <label for="loop-speed-select" class="speed-label">Speed:</label>
+            <select id="loop-speed-select" class="speed-select" title="Change loop auto-play speed">
+              <option value="3">Fast (3s)</option>
+              <option value="4.5" selected>Normal (4.5s)</option>
+              <option value="7">Relaxed (7s)</option>
+            </select>
+          </div>
+
+          <button id="play-pause-btn" class="loop-ctrl-btn running" title="Play or pause the continuous loop">
+            <span id="play-pause-icon" class="ctrl-icon">&#10074;&#10074;</span>
+            <span id="play-pause-text" class="ctrl-text">Pause Loop</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Main Spotlight Card -->
+      <div id="spotlight-card" class="spotlight-card card-transition-in">
+        <!-- Loop Timer Progress Bar -->
+        <div class="loop-progress-track">
+          <div id="loop-progress-fill" class="loop-progress-fill"></div>
+        </div>
+
+        <div class="card-grid">
+          <!-- Left: Hero Portrait Photo with Overlays -->
+          <div class="card-media-col">
+            <div class="photo-frame">
+              <img id="actor-photo" 
+                   src="" 
+                   alt="Actor Photo" 
+                   class="actor-portrait"
+                   referrerpolicy="no-referrer" />
+              
+              <div class="photo-overlay-gradient"></div>
+
+              <!-- Badges on photo -->
+              <div class="photo-floating-badges">
+                <span id="actor-number-badge" class="photo-rank-badge">Actor #1 of 10</span>
+              </div>
+
+              <!-- On-Image Quick Nav Buttons -->
+              <button id="hero-prev-btn" class="hero-nav-btn prev" title="Previous Actor (←)" aria-label="Previous Actor">
+                <span>&#10094;</span>
+              </button>
+              <button id="hero-next-btn" class="hero-nav-btn next" title="Next Actor (→)" aria-label="Next Actor">
+                <span>&#10095;</span>
+              </button>
+
+              <div class="photo-ambient-halo"></div>
+            </div>
+          </div>
+
+          <!-- Right: Actor Profile & Filmography -->
+          <div class="card-info-col">
+            <div class="info-header">
+              <span class="info-kicker">CINEMATIC ICON</span>
+              <h2 id="actor-name" class="actor-title-heading">Prabhas</h2>
+              <div id="actor-title" class="actor-moniker">Rebel Star</div>
+            </div>
+
+            <div class="info-body">
+              <p id="actor-extract" class="actor-biography">
+                Uppalapati Venkata Suryanarayana Prabhas Raju, known mononymously as Prabhas, is an Indian actor who predominantly works in Telugu cinema. He is one of the highest-paid actors in Indian cinema and gained global fame with the Baahubali franchise.
+              </p>
+
+              <div class="filmography-block">
+                <h4 class="block-label">BLOCKBUSTERS &amp; NOTABLE FILMS</h4>
+                <div id="actor-movies" class="movie-pill-group">
+                  <!-- Rendered dynamically -->
+                </div>
+              </div>
+            </div>
+
+            <!-- Card Bottom Actions -->
+            <div class="card-actions-row">
+              <div class="nav-button-group">
+                <button id="prev-actor-btn" class="action-btn secondary" title="Previous Actor (Left Arrow)">
+                  <span class="btn-arrow">&#8592;</span>
+                  <span>Previous</span>
+                </button>
+                <button id="next-actor-btn" class="action-btn primary" title="Next Actor in Loop (Right Arrow)">
+                  <span>Next Actor</span>
+                  <span class="btn-arrow">&#8594;</span>
+                </button>
+              </div>
+
+              <a id="actor-wiki-btn" href="#" target="_blank" rel="noopener noreferrer" class="action-btn ghost" title="Search Actor on Wikipedia">
+                <span>Explore Wikipedia</span>
+                <span class="btn-icon">↗</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Filmstrip: 10 Actors Interactive Thumbnail Strip -->
+      <div class="filmstrip-container">
+        <div class="filmstrip-header">
+          <div class="filmstrip-title-row">
+            <span class="filmstrip-icon">🎞️</span>
+            <span class="filmstrip-heading">10 Superstars Filmstrip</span>
+            <span class="filmstrip-sub">(Click any actor to jump immediately)</span>
+          </div>
+          <div class="filmstrip-arrows">
+            <button id="filmstrip-scroll-left" class="strip-arrow-btn" aria-label="Scroll left">&#8249;</button>
+            <button id="filmstrip-scroll-right" class="strip-arrow-btn" aria-label="Scroll right">&#8250;</button>
+          </div>
+        </div>
+        <div class="filmstrip-viewport">
+          <div id="filmstrip-track" class="filmstrip-track">
+            <!-- 10 actor thumbnails rendered dynamically -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Grid View Section (Alternate Full 10-Actor Roster) -->
+    <section id="grid-section" class="grid-section hidden">
+      <div class="grid-controls-bar">
+        <div class="grid-title-wrap">
+          <h3 class="grid-section-title">Complete 10-Actor Roster</h3>
+          <p class="grid-section-sub">Browse all stars or click any card to launch into the continuous loop showcase.</p>
+        </div>
+        <div class="grid-search-wrap">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="actor-search" class="grid-search-input" placeholder="Search actor or movie..." />
+        </div>
+      </div>
+
+      <div id="all-actors-grid" class="actors-grid-layout">
+        <!-- Rendered dynamically by script.js -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Interactive Keyboard / Instructions Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-shortcuts">
+        <span class="shortcut-item"><kbd>←</kbd> <kbd>→</kbd> Navigate Actors</span>
+        <span class="shortcut-item"><kbd>Space</kbd> Play / Pause Loop</span>
+        <span class="shortcut-item"><kbd>Swipe</kbd> Mobile Gesture Support</span>
+      </div>
+      <p class="footer-credits">
+        CineVerse &copy; 2026 &bull; Dedicated to Cinema Enthusiasts Worldwide &bull; 6 Film Industries &bull; 60 Legendary Actors
+      </p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
