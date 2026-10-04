@@ -1,4 +1,4 @@
-﻿# 🎬 CineVerse - Global Film Industries & Top 10 Actors Showcase
+# 🎬 CineVerse - Global Film Industries & Top 10 Actors Showcase
 
 An interactive, responsive web experience exploring leading film industries worldwide and showcasing their top 10 iconic actors with rich media, biographies, notable filmographies, interactive 3D/carousel loop views, and grid mode.
 
